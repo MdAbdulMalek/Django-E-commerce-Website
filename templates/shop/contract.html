@@ -1,0 +1,57 @@
+{% extends 'basic.html' %}
+
+{% block title%}Contract Us{% endblock %}
+
+{% block css %}
+
+    div.container{
+    max-width: 650px;
+    }
+
+{% endblock %}
+
+{% block body %} 
+
+<div class="container my-3">
+    <form action="/contract/" method="post">
+    {% csrf_token %}
+
+        <li class="list-group-item list-group-item-success d-flex justify-content-between align-items-center my-2">
+             <h4> Contact Us. </h4>
+        </li>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter Your Name" required>
+        </div>
+        <div class="form-group">
+            <label for="name">Email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter Your Email" required>
+        </div>
+        <div class="form-group">
+            <label for="name">Phone</label>
+            <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter Your Phone Number" required>
+        </div>
+        <div class="form-group">
+           <div class="form-group">
+            <label for="desc">How May We Help You ?</label>
+            <textarea class="form-control" id="desc" name="desc" rows="3" required></textarea>
+        </div>
+        <button type="submit" id="contract" name="contract" class="btn btn-success">Submit</button>
+        <button type="reset" class="btn btn-secondary">  <-Reset-> </button>
+      </form>
+</div>
+
+{% endblock %}
+
+{% block js %}
+
+<script>
+
+    {% if thank %}
+    alert('Thanks for contacting us, you will get replay very soon........');
+    document.location = "/contract";
+    {% endif %}
+
+</script>
+
+{% endblock %}
